@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace ConsoleApp
 {
     class Program
@@ -16,7 +17,7 @@ namespace ConsoleApp
 
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<HtmlNodeCollection> Index()
         {
             HttpClient hc = new HttpClient();
             HttpResponseMessage result = await hc.GetAsync($"http://{HttpContext.Request.Host}/page.html");
@@ -29,7 +30,7 @@ namespace ConsoleApp
 
             HtmlNodeCollection links = doc.DocumentNode.SelectNodes("//a[@href]");//the parameter is use xpath see: https://www.w3schools.com/xml/xml_xpath.asp 
 
-            return View(links);
+            return links;
         }
     }
 }

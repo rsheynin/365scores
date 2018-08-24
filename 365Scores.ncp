@@ -5,7 +5,7 @@
     <Language>CSharp</Language>
     <Entities>
       <Entity type="Class">
-        <Name>Subject</Name>
+        <Name>Subject_Stock</Name>
         <Access>Public</Access>
         <Location left="108" top="137" />
         <Size width="195" height="128" />
@@ -16,19 +16,19 @@
         <Modifier>Abstract</Modifier>
       </Entity>
       <Entity type="Class">
-        <Name>Observer</Name>
+        <Name>IObserver_Investore</Name>
         <Access>Public</Access>
-        <Location left="463" top="137" />
+        <Location left="402" top="137" />
         <Size width="163" height="94" />
         <Collapsed>False</Collapsed>
         <Member type="Method">public abstract void Update()</Member>
         <Modifier>Abstract</Modifier>
       </Entity>
       <Entity type="Class">
-        <Name>ConcreteObserver</Name>
+        <Name>ConcreteObserver_Sorros</Name>
         <Access>Public</Access>
-        <Location left="463" top="382" />
-        <Size width="170" height="111" />
+        <Location left="402" top="382" />
+        <Size width="179" height="111" />
         <Collapsed>False</Collapsed>
         <Member type="Field">SubjectState _observerState</Member>
         <Member type="Method">public void Update()</Member>
@@ -36,11 +36,11 @@
       </Entity>
       <Entity type="Comment">
         <Text>observerState = subject.GetaState()</Text>
-        <Location left="463" top="544" />
+        <Location left="402" top="544" />
         <Size width="229" height="50" />
       </Entity>
       <Entity type="Class">
-        <Name>ConcreteSubjectIBM_LiveScores</Name>
+        <Name>ConcreteSubject_IBM</Name>
         <Access>Public</Access>
         <Location left="108" top="399" />
         <Size width="220" height="111" />
@@ -52,8 +52,59 @@
       <Entity type="Comment">
         <Text>foreach o in observers
      o.Update()</Text>
-        <Location left="284" top="296" />
+        <Location left="223" top="296" />
         <Size width="160" height="50" />
+      </Entity>
+      <Entity type="Class">
+        <Name>ConcreteSubject_IBM</Name>
+        <Access>Public</Access>
+        <Location left="736" top="399" />
+        <Size width="220" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">SubjectState subjectState</Member>
+        <Member type="Method">public SubjectState GetState()</Member>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Comment">
+        <Text>foreach o in observers
+     o.Update()</Text>
+        <Location left="912" top="296" />
+        <Size width="160" height="50" />
+      </Entity>
+      <Entity type="Comment">
+        <Text>observerState = subject.GetaState()</Text>
+        <Location left="1091" top="544" />
+        <Size width="229" height="50" />
+      </Entity>
+      <Entity type="Class">
+        <Name>ConcreteObserver</Name>
+        <Access>Public</Access>
+        <Location left="1091" top="382" />
+        <Size width="170" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">SubjectState _observerState</Member>
+        <Member type="Method">public void Update()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Observer</Name>
+        <Access>Public</Access>
+        <Location left="1091" top="137" />
+        <Size width="163" height="94" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public abstract void Update()</Member>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Subject</Name>
+        <Access>Public</Access>
+        <Location left="736" top="137" />
+        <Size width="195" height="128" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public void Attach(Observer observer)</Member>
+        <Member type="Method">public void Detach(Observer observer)</Member>
+        <Member type="Method">public void Notify()</Member>
+        <Modifier>Abstract</Modifier>
       </Entity>
     </Entities>
     <Relationships>
@@ -61,11 +112,11 @@
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>568</X>
+          <X>507</X>
           <Y>519</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>568</X>
+          <X>507</X>
           <Y>518</Y>
         </BendPoint>
       </Relationship>
@@ -82,6 +133,8 @@
         </BendPoint>
       </Relationship>
       <Relationship type="Association" first="0" second="1">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
@@ -89,6 +142,8 @@
         <StartRole>observer</StartRole>
       </Relationship>
       <Relationship type="Association" first="2" second="4">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
@@ -103,6 +158,117 @@
           <Y>254</Y>
         </BendPoint>
       </Relationship>
+      <Relationship type="Comment" first="7" second="11">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>956</X>
+          <Y>254</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="9" second="6">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>subject</StartRole>
+      </Relationship>
+      <Relationship type="Association" first="11" second="10">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>observer</StartRole>
+      </Relationship>
+      <Relationship type="Generalization" first="6" second="11">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>825</X>
+          <Y>290</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="9" second="10">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Comment" first="8" second="9">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1196</X>
+          <Y>519</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1196</X>
+          <Y>518</Y>
+        </BendPoint>
+      </Relationship>
     </Relationships>
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Untitled</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>IWebsiteScanner</Name>
+        <Access>Public</Access>
+        <Location left="276" top="514" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>NewClass</Name>
+        <Access>Public</Access>
+        <Location left="994" top="502" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IWebsiteScannerManager</Name>
+        <Access>Public</Access>
+        <Location left="276" top="112" />
+        <Size width="175" height="78" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">ScanResult Scan()</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IWebsiteScannerResultManager</Name>
+        <Access>Public</Access>
+        <Location left="863" top="112" />
+        <Size width="214" height="61" />
+        <Collapsed>False</Collapsed>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IWebsiteScannerPublisher</Name>
+        <Access>Public</Access>
+        <Location left="306" top="235" />
+        <Size width="188" height="78" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">ScanResult Scan()</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IWebsiteScannerResultBuilder</Name>
+        <Access>Public</Access>
+        <Location left="918" top="235" />
+        <Size width="206" height="78" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">ScanResult Scan()</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IWebsiteScanEventAgrigator</Name>
+        <Access>Public</Access>
+        <Location left="584" top="112" />
+        <Size width="195" height="61" />
+        <Collapsed>False</Collapsed>
+      </Entity>
+    </Entities>
+    <Relationships />
   </ProjectItem>
 </Project>
