@@ -1,4 +1,6 @@
-﻿namespace Domain
+﻿using System.Collections.Generic;
+
+namespace Domain
 {
     public class Team
     {
@@ -11,8 +13,6 @@
 
         public string Name { get; set; }
 
-
-        public int CompetitionId { get; set; }
-        public virtual Competition Competition { get; set; }
+        public virtual ICollection<TeamCompetition> TeamCompetition { get; set; }
     }
 }

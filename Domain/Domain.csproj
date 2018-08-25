@@ -48,7 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompetionRepository.cs" />
     <Compile Include="CompetionContext.cs" />
+    <Compile Include="IRepository.cs" />
     <Compile Include="SportType.cs" />
     <Compile Include="Competition.cs" />
     <Compile Include="Country.cs" />
@@ -56,6 +58,7 @@
     <Compile Include="LeagueType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Team.cs" />
+    <Compile Include="TeamCompetition.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

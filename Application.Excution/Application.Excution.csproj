@@ -32,8 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HtmlAgilityPack, Version=1.4.9.5, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
-      <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    <Reference Include="HtmlAgilityPack, Version=1.8.7.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.8.7\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -51,7 +51,6 @@
     <Compile Include="ICompetitionScanerConsumerFactory.cs" />
     <Compile Include="ICompetitionScanerProducerFactory.cs" />
     <Compile Include="IExecution.cs" />
-    <Compile Include="IReposytory.cs" />
     <Compile Include="IScanerConsumer.cs" />
     <Compile Include="IScanerProducer.cs" />
     <Compile Include="IWebSiteScaner.cs" />
@@ -64,9 +63,6 @@
     <Compile Include="WebsiteScanerConsumerFactory.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{05D73C7C-CA79-43D3-A1EE-E138329F60E9}</Project>
       <Name>Common</Name>
@@ -75,6 +71,9 @@
       <Project>{D655817F-6C21-426A-BD4B-4CCDC298CA01}</Project>
       <Name>Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

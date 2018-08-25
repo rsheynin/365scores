@@ -7,11 +7,11 @@ namespace Application.Excution
     public class WebsiteScanerConsumer : IScanerConsumer
     {
         private readonly BlockingCollection<Competition> _competitions;
-        private readonly IReposytory _repository;
+        private readonly IRepository<Competition> _repository;
 
         public WebsiteScanerConsumer(
             BlockingCollection<Competition> competitions, 
-            IReposytory reposytory)
+            IRepository<Competition> reposytory)
         {
             _competitions = competitions;
             _repository = reposytory;
@@ -24,7 +24,7 @@ namespace Application.Excution
                 try
                 {
                     var competition = _competitions.Take();
-                    _repository.AddOrUpdate(competition);
+                    //_repository.AddOrUpdate(competition);
                 }
                 catch (InvalidOperationException ex)
                 {

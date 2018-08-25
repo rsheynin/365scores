@@ -39,8 +39,8 @@ namespace WebsiteScaner
             var kernel = new StandardKernel();
             var modules = new List<INinjectModule>
             {
+                new CommonIOCRegistrationModule(),
                 new WebSiteScanerIOCRegistrationModule(),
-
             };
 
             kernel.Load(modules);

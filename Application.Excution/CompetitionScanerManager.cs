@@ -56,7 +56,7 @@ namespace Application.Excution
             for (int i = 0; i < factoriesAmount; i++)
             {
                 var scanerProducer = _scanerProducerFactories.ElementAt(i).Create(competitions);
-                var producerTask = Task.Run(() => scanerProducer.ProducerAsync());
+                var producerTask = Task.Run(() => scanerProducer.Producer());
                 producerTasks[i] = producerTask;
             }
 

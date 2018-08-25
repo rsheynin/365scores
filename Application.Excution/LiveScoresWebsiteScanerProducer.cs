@@ -12,8 +12,7 @@ namespace Application.Excution
     {
         private readonly BlockingCollection<Competition> _competitions;
         private readonly IWebHtmlReader _webHtmlReader;
-        //private IWebsiteScanerCompetionHtmlCoverter _websiteScanerCompetionHtmlCoverter;
-        private const  string ITEM_URL = "http://www.livescores.com/";
+        private const string ITEM_URL = "http://www.livescores.com/";
 
         public LiveScoresWebsiteScanerProducer(BlockingCollection<Competition> competitions, IWebHtmlReader webHtmlReader)
         {
@@ -21,9 +20,10 @@ namespace Application.Excution
             _webHtmlReader = webHtmlReader;
         }
 
-        public async void ProducerAsync()
+        public void Producer()
         {
             //todo: check for NullReferance exception 
+            //todo: remove all strings to const
             var htmlDoc = _webHtmlReader.Read(ITEM_URL);
 
             //Console.WriteLine(htmlContent.InnerText);
@@ -34,19 +34,11 @@ namespace Application.Excution
 
             foreach (var html in htmlContent)
             {
-                //var competition = _websiteScanerCompetionHtmlCoverter.GetCometion(html,league,date);
                 var isCopetitionNode = html.Attributes["class"].Value.Contains("row-gray");
                 var htmlNodeCollection = html.ChildNodes;
                 if (isCopetitionNode)
                 {
-                    var competition = new Competition();
-                    competition.DateTime = date;
-                    competition.LeagueType = league;
-                    competition.Country = league.Country;
-                    
-                    GetCompetitionTime(htmlNodeCollection, competition);
-
-                    GetCompetitionTeams(competition, htmlNodeCollection);
+                    var competition = GetCompetition(date, league, htmlNodeCollection);
 
                     Notify(competition);
 
@@ -54,21 +46,39 @@ namespace Application.Excution
                 }
                 else
                 {
-                    //todo: check for NullReferance exception 
-                    var leagueHtmlDescendantsCollection = html.Descendants().ElementAt(1).ChildNodes;
-
-                    var dateString = leagueHtmlDescendantsCollection[3].InnerText;
-                    date = Convert.ToDateTime(dateString);
-
-                    var t = leagueHtmlDescendantsCollection[1].ChildNodes;
-
-                    league.Country = t[1].InnerText;
-                    league.LeagueType = t[3].InnerText;
+                    date = GetLeagueAndDate(html, league);
 
                     NotifyLeague(league, date);
-
                 }
             }
+        }
+
+        private static DateTime GetLeagueAndDate(HtmlNode html, League league)
+        {
+            DateTime date;
+            var leagueHtmlDescendantsCollection = html.Descendants().ElementAt(1).ChildNodes;
+
+            var dateString = leagueHtmlDescendantsCollection[3].InnerText;
+            date = Convert.ToDateTime(dateString);
+
+            var t = leagueHtmlDescendantsCollection[1].ChildNodes;
+
+            league.Country = t[1].InnerText;
+            league.LeagueType = t[3].InnerText;
+            return date;
+        }
+
+        private Competition GetCompetition(DateTime date, League league, HtmlNodeCollection htmlNodeCollection)
+        {
+            var competition = new Competition();
+            competition.DateTime = date;
+            competition.LeagueType = league;
+            competition.Country = league.Country;
+
+            GetCompetitionTime(htmlNodeCollection, competition);
+
+            GetCompetitionTeams(competition, htmlNodeCollection);
+            return competition;
         }
 
         private static void GetCompetitionTeams(Competition competition, HtmlNodeCollection htmlNodeCollection)

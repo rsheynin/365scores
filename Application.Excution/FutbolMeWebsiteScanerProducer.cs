@@ -8,7 +8,6 @@ namespace Application.Excution
     {
         private readonly BlockingCollection<Competition> _competitions;
         private readonly IWebHtmlReader _webHtmlReader;
-        //private IWebsiteScanerCompetionHtmlCoverter _websiteScanerCompetionHtmlCoverter;
 
         public FutbolMeWebsiteScanerProducer(BlockingCollection<Competition> competitions, IWebHtmlReader webHtmlReader)
         {
@@ -16,31 +15,10 @@ namespace Application.Excution
             _webHtmlReader = webHtmlReader;
         }
 
-        public async void ProducerAsync()
+        public async void Producer()
         {
             var htmlContent = _webHtmlReader.Read("https://futbolme.com/");
-
-            //var league = new League();
-            //var date = new DateTime();
-            //foreach (var html in htmlContent)
-            //{
-            //    var isCopetitionNode = html.Attributes["class"].Value.Contains("row-gray");
-            //    if (isCopetitionNode)
-            //    {
-            //        //var competition = _websiteScanerCompetionHtmlCoverter.GetCometion(selectSingleNode);
-            //    }
-            //    else
-            //    {
-            //        league.Country = html.SelectSingleNode("//div[@class='clear']//div[@class='left']//a//strong").InnerText;
-                    
-            //        //date = html.SelectSingleNode("//div[@class='content']//div[contains(@class,'row row-tall mt4') or contains(@class,'row-gray')]").InnerText;
-            //    }
-
-
-                
-
-            //    //_competitions.Add(competition);
-            //}
+            throw new NotImplementedException();
         }
     }
 }

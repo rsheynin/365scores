@@ -2,6 +2,6 @@
 {
     public interface IScanerProducer
     {
-        void ProducerAsync();
+        void Producer();
     }
 }
