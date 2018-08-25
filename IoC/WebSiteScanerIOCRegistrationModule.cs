@@ -46,6 +46,8 @@ namespace IoC
             Kernel.Bind<ICompetitionScanerProducerFactory>().To<LiveScoresWebsiteScanerProducerFactory>();
             Kernel.Bind<IScanerProducer>().To<LiveScoresWebsiteScanerProducer>();
 
+            Kernel.Bind<IWebHtmlReader>().To<WebHtmlReader>();
+
             Kernel.Bind<IEnumerable<ICompetitionScanerProducerFactory>>().ToMethod(RegisterScanerProducerFactories);
         }
 

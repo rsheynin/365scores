@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompetitionStatus.cs" />
     <Compile Include="Website.cs" />
     <Compile Include="WebsiteScanerConst.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
