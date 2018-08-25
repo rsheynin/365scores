@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _365Score
+namespace Domain
 {
     public class Class1
     {
